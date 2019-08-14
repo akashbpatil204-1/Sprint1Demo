@@ -18,6 +18,7 @@ export default class PasswordReset extends React.Component{
 
     
     validatePassword(){
+        this.copy();
         console.log("vpwd");
        let  pwd = document.getElementById("t1").value;
        let  cpwd = document.getElementById("t2").value;
@@ -48,6 +49,18 @@ export default class PasswordReset extends React.Component{
        
     }
    
+    copy(){
+        window.event.preventDefault();
+        if (window.event.ctrlKey){
+        if (window.event.keyCode == 86) {
+            console.log("copy");
+      //  document.getElementById("t1").value = " ";
+        document.getElementById("t2").value = "";
+      
+
+        }
+    }
+}
     checkScore(){
         console.log("run hoja bhai");
         let  cpwd = document.getElementById("t2").value;
@@ -95,8 +108,9 @@ export default class PasswordReset extends React.Component{
         <div className="password_reset">
         <form action="" method="">
         <pre>    
-        Password :          <input type="text" name="fname" id="t1" oncopy="return false" onpaste="return false" onKeyUp={this.validatePassword} ></input><span id="msg1">  </span><br/><br/>
-        Confirm Password:   <input type="text" name="fname" id="t2" oncopy="return false" onpaste="return false" onKeyUp={this.validatePassword} ></input><span id="msg2">  </span><br/>
+        Password :          <input type="password" name="password" id="t1"  onKeyUp={this.validatePassword} ></input><span id="msg1">  </span><br/><br/>
+        Confirm Password:   <input type="password" name="cpassword" id="t2"  onKeyUp={this.validatePassword} ></input><span id="msg2">  </span><br/>
+       
         <span id="">  </span>
 
         <input type="submit" value="Submit"></input> <input type="reset" value="Reset"></input><span id="msg3">  </span>
